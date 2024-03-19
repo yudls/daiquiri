@@ -16,4 +16,4 @@ git clone https://github.com/yudls/daiquiri
 cd daiquiri
 mvn clean install
 ```
-Далее запустите файл с таким же названием DaiquiriLanguage-1.0-SNAPSHOT.jar
+Далее запустите файл с таким же названием: DaiquiriLanguage-1.0-SNAPSHOT.jar
