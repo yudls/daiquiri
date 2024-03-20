@@ -9,7 +9,7 @@ target/maven-status
 
 
 ### IntelliJ IDEA ###
-.idea/
+.idea
 *.iws
 *.iml
 *.ipr
