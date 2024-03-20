@@ -63,8 +63,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="daiquiri-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/target/daiquiri-1.0-SNAPSHOT.jar" />
+    <configuration name="daiquiri-1.0.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/daiquiri-1.0.jar" />
       <method v="2" />
     </configuration>
     <configuration name="daiquiri-1.0.jar" type="JarApplication" temporary="true">
@@ -74,7 +74,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JAR Application.daiquiri-1.0.jar" />
-        <item itemvalue="JAR Application.daiquiri-1.0-SNAPSHOT.jar" />
+        <item itemvalue="JAR Application.daiquiri-1.0.jar" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
