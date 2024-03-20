@@ -10,7 +10,6 @@ public final class Variables {
         variables.put("ПИ", new NumberValue(Math.PI));
         variables.put("E", new NumberValue(Math.E));
         variables.put("Е", new NumberValue(Math.E));
-        variables.put("GOLDEN_RATIO", new NumberValue(1.618));
     }
     public static boolean isExists(String key) {
         return variables.containsKey(key);

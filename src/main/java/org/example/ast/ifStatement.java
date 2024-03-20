@@ -25,9 +25,9 @@ public class ifStatement implements Statement{
     @Override
     public String toString() {
         final StringBuilder result = new StringBuilder();
-        result.append("if ").append(expression).append(' ').append(ifStatement);
+        result.append("Если ").append(expression).append(' ').append(ifStatement);
         if (elseStatement != null) {
-            result.append("\nelse ").append(elseStatement);
+            result.append("\nИначе ").append(elseStatement);
         }
         return result.toString();
     }
