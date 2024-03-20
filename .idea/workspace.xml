@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8fe6e59-d247-45e3-b5d6-db747e7c2c45" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="c8fe6e59-d247-45e3-b5d6-db747e7c2c45" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,11 +42,14 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example.ast" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example.ast" />
     </key>
   </component>
-  <component name="RunManager" selected="JAR Application.daiquiri-1.0-SNAPSHOT.jar">
+  <component name="RunManager" selected="JAR Application.daiquiri-1.0.jar">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="DaiquiriLanguage" />
@@ -66,8 +67,13 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/daiquiri-1.0-SNAPSHOT.jar" />
       <method v="2" />
     </configuration>
+    <configuration name="daiquiri-1.0.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/daiquiri-1.0.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.daiquiri-1.0.jar" />
         <item itemvalue="JAR Application.daiquiri-1.0-SNAPSHOT.jar" />
         <item itemvalue="Application.Main" />
       </list>
