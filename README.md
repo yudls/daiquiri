@@ -9,7 +9,7 @@
 Документацию по языку можно посмотреть в файле [Documentation Daiquiri Language.pdf](https://github.com/yudls/daiquiri/blob/main/docs/Documentation%20Daiquiri%20Language.pdf).
 ## Как попробовать
 Чтобы программа работала на вашем компьютере должен быть установлен нужен JDK, если его ещё нет, можете установить с [официального сайта Oracle](https://www.oracle.com/java/technologies/downloads).
-Чтобы запустить приложение, скачайте актуальную версию [DaiquiriLanguage.jar](https://github.com/yudls/daiquiri/blob/main/target/daiquiri-1.0.jar),
+Чтобы запустить приложение, скачайте актуальную версию [daiquiri.jar](https://github.com/yudls/daiquiri/blob/main/jar-files/daiquiri-1.1.jar),
 или используйте сложный вариант:
 ```
 git clone https://github.com/yudls/daiquiri
