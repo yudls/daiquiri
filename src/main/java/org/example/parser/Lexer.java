@@ -68,7 +68,7 @@ public final class Lexer {
         while (true) {
             if (current == '.') {
                 if (buffer.indexOf(".") != -1)
-                    throw new RuntimeException("invalid float number");
+                    throw new RuntimeException("Некорректное число");
             } else if (!Character.isDigit(current)) {
                 break;
             }
@@ -115,15 +115,18 @@ public final class Lexer {
         }
         String word = buffer.toString();
         switch (word) {
-            case "Вывод" : {
+            case "Вывод":
+            case "вывод": {
                 addToken(TokenType.PRINT);
                 break;
             }
-            case "Если" : {
+            case "Если" :
+            case "если" : {
                 addToken(TokenType.IF);
                 break;
             }
-            case "Иначе" : {
+            case "Иначе" :
+            case "иначе": {
                 addToken(TokenType.ELSE);
                 break;
             }
@@ -146,12 +149,14 @@ public final class Lexer {
                         buffer.append('"');
                         continue;
                     }
-                    case 'n': {
+                    case 'n':
+                    case 'н':{
                         current = next();
                         buffer.append('\n');
                         continue;
                     }
-                    case 't': {
+                    case 't':
+                    case 'т': {
                         current = next();
                         buffer.append('\t');
                         continue;
@@ -177,7 +182,7 @@ public final class Lexer {
     private void tokenizeMultilineComment() {
         char current = peek(0);
         while (true) {
-            if (current == '\0') throw new RuntimeException("Missing close tag");
+            if (current == '\0') throw new RuntimeException("Пропуск закрывающего тэга");
             if (current == '*' && peek(1) == '/')
                 break;
             current = next();

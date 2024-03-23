@@ -47,6 +47,9 @@ public final class Parser {
         if (match(TokenType.IF)) {
             return ifElse();
         }
+        if (get(0).getType() == TokenType.LBRACE) {
+            return block();
+        }
         return assignmentStatement();
     }
 
@@ -58,7 +61,7 @@ public final class Parser {
             consume(TokenType.EQ);
             return new AssignmentStatement(variable, expression());
         }
-        throw new RuntimeException("Unknown statement");
+        throw new RuntimeException("Неизвестная инструкция ");
     }
 
     private Statement ifElse() {
@@ -208,12 +211,13 @@ public final class Parser {
             match(TokenType.RPAREN);
             return result;
         }
-        throw new RuntimeException("Unknown expression");
+
+        throw new RuntimeException("Неизвестное выражение");
     }
 
     private Token consume(TokenType type) {
         final Token current = get(0);
-        if (type != current.getType()) throw new RuntimeException("Token " + current + " doesn't match " + type);
+        if (type != current.getType()) throw new RuntimeException("Токен " + current + " не соответствует " + type);
         pos++;
         return current;
     }

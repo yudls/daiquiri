@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c8fe6e59-d247-45e3-b5d6-db747e7c2c45" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Editor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Editor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ast/BinaryExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ast/BinaryExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ast/PrintStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ast/PrintStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ast/VariableExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ast/VariableExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ast/ifStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ast/ifStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/parser/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/parser/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/parser/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/parser/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/parser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/daiquiri-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/daiquiri-1.0.jar" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QQk5l4ARfiA3Amc4Z5v90LgbUn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.ast" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.ast" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+      <module name="daiquiri" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="daiquiri-1.0.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/daiquiri-1.0.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="daiquiri-1.0.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/daiquiri-1.0.jar" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.daiquiri-1.0.jar" />
+        <item itemvalue="JAR Application.daiquiri-1.0.jar" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c8fe6e59-d247-45e3-b5d6-db747e7c2c45" name="Changes" comment="" />
+      <created>1685293012192</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685293012192</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.nio.file.NoSuchFileException" package="java.nio.file" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

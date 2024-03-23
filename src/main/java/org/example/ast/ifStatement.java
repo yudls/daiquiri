@@ -13,13 +13,14 @@ public class ifStatement implements Statement{
 
     @Override
     public String execute() {
-        final double result = expression.eval().asNumber();
-        if (result != 0) {
-            ifStatement.execute();
+        final double expression_result = expression.eval().asNumber();
+        String result = "";
+        if (expression_result != 0) {
+            result = ifStatement.execute();
         } else if (elseStatement != null) {
-            elseStatement.execute();
+             result = elseStatement.execute();
         }
-        return "";
+        return result;
     }
 
     @Override

@@ -18,6 +18,15 @@ public class BinaryExpression implements Expression {
     public Value eval() {
         final Value value1 = exp1.eval();
         final Value value2 = exp2.eval();
+
+        if (value1 instanceof StringValue && value2 instanceof NumberValue)
+            throw new RuntimeException("Ошибка конкатенации, можно конкатенировать только строку с другой строкой," +
+                    " а не с числом");
+        if (value1 instanceof NumberValue && value2 instanceof StringValue)
+            throw new RuntimeException("Ошибка сложения, можно складывать только число с другим числом," +
+                    " а не со строкой");
+
+
         if (value1 instanceof StringValue) {
             final String string1 = value1.asString();
             switch (operation) {

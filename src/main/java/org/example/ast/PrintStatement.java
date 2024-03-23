@@ -17,6 +17,6 @@ public class PrintStatement implements Statement {
 
     @Override
     public String toString() {
-        return "print " + expression;
+        return "Вывод " + expression;
     }
 }

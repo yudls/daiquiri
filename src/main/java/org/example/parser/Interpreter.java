@@ -20,7 +20,7 @@ public final class Interpreter {
         try {
             result = program.execute();
         } catch (Exception e) {
-            throw new RuntimeException("The program was aborted due to an error");
+            throw new RuntimeException("Программа была прервана из-за ошибки\n" + e);
         }
         return result;
     }
