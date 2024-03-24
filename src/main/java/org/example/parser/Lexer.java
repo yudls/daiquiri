@@ -10,7 +10,7 @@ public final class Lexer {
     private final int length;
     private final List<Token> tokens;
     private int pos;
-    private static final String OPERATOR_CHARS = "+-*/=<>(){}!&|";
+    private static final String OPERATOR_CHARS = "+-*/=<>(){}!&|;";
     private static final Map<String, TokenType> OPERATORS;
     static {
         OPERATORS = new HashMap<>();
@@ -23,6 +23,8 @@ public final class Lexer {
         OPERATORS.put(")", TokenType.RPAREN);
         OPERATORS.put("{", TokenType.LBRACE);
         OPERATORS.put("}", TokenType.RBRACE);
+        OPERATORS.put(";", TokenType.SEMICOLON);
+
         OPERATORS.put("=", TokenType.EQ);
         OPERATORS.put("<", TokenType.LT);
         OPERATORS.put(">", TokenType.GT);
@@ -128,6 +130,16 @@ public final class Lexer {
             case "Иначе" :
             case "иначе": {
                 addToken(TokenType.ELSE);
+                break;
+            }
+            case "Пока" :
+            case "пока": {
+                addToken(TokenType.WHILE);
+                break;
+            }
+            case "Для" :
+            case "для": {
+                addToken(TokenType.FOR);
                 break;
             }
             default: {

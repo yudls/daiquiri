@@ -47,6 +47,12 @@ public final class Parser {
         if (match(TokenType.IF)) {
             return ifElse();
         }
+        if (match(TokenType.WHILE)) {
+            return whileStatement();
+        }
+        if (match(TokenType.FOR)) {
+            return forStatement();
+        }
         if (get(0).getType() == TokenType.LBRACE) {
             return block();
         }
@@ -75,6 +81,26 @@ public final class Parser {
         }
         return new ifStatement(condition, ifStatement, elseStatement);
     }
+
+    private Statement whileStatement() {
+        final Expression condition = expression();
+        final Statement statement = statementOrBlock();
+        return new WhileStatement(condition, statement);
+    }
+
+    private Statement forStatement() {
+        consume(TokenType.LPAREN);
+        final Statement initialization = assignmentStatement();
+        consume(TokenType.SEMICOLON);
+        final Expression termination = expression();
+        consume(TokenType.SEMICOLON);
+        final Statement increment = assignmentStatement();
+        consume(TokenType.RPAREN);
+        final Statement statement = statementOrBlock();
+        return new ForStatement(initialization, termination, increment, statement);
+    }
+
+
 
 
     private Expression expression() {

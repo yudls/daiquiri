@@ -9,7 +9,6 @@ public class BlockStatement implements Statement{
     private StringBuilder result;
     public BlockStatement() {
         statements = new ArrayList<>();
-        result = new StringBuilder();
     }
 
 
@@ -18,6 +17,7 @@ public class BlockStatement implements Statement{
     }
     @Override
     public String execute() {
+        result = new StringBuilder();
         for (Statement statement : statements) {
             result.append(statement.execute());
         }

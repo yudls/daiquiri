@@ -12,14 +12,14 @@ public class ShortcutsHelpPanel extends JDialog{
         textArea.setEditable(false);
         textArea.setText(
                 "Сочетания клавиш:\n" +
-                        "Ctrl + C - Копировать\n" +
-                        "Ctrl + V - Вставить\n" +
-                        "Ctrl + X - Вырезать\n" +
-                        "Ctrl + N - Новый файл\n" +
-                        "Ctrl + O - Открыть файл\n" +
-                        "Ctrl + S - Сохранить файл\n" +
-                        "Ctrl + P - Печать\n" +
-                        "Ctrl + R - Запуск программы\n"
+                        "Ctrl (Cmd) + C - Копировать\n" +
+                        "Ctrl (Cmd) + V - Вставить\n" +
+                        "Ctrl (Cmd) + X - Вырезать\n" +
+                        "Ctrl (Cmd) + N - Новый файл\n" +
+                        "Ctrl (Cmd) + O - Открыть файл\n" +
+                        "Ctrl (Cmd) + S - Сохранить файл\n" +
+                        "Ctrl (Cmd) + P - Печать\n" +
+                        "Ctrl (Cmd) + R - Запуск программы\n"
         );
         // Создаем панель с текстовой областью и добавляем ее на диалоговое окно
         JScrollPane scrollPane = new JScrollPane(textArea);

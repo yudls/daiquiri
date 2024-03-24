@@ -1,6 +1,7 @@
 package org.example.parser;
 
 public enum TokenType {
+    // Types
     NUMBER,
     WORD,
     TEXT,
@@ -9,11 +10,19 @@ public enum TokenType {
     PRINT,
     IF,
     ELSE,
+    WHILE,
+    FOR,
+
+    // Operations
     PLUS,
     MINUS,
     STAR,
     SLASH,
+
+    // Assignment
     EQ,
+
+    // Logical
     EQEQ,
     EXCL,
     EXCLEQ,
@@ -21,16 +30,17 @@ public enum TokenType {
     LTEQ,
     GT,
     GTEQ,
-
     BAR,
     BARBAR,
     AMP,
     AMPAMP,
 
+    // Symbols
     LPAREN,
     RPAREN,
     LBRACE,
     RBRACE,
+    SEMICOLON, // Точка с запятой
 
     EOF
 }

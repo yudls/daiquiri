@@ -1,7 +1,9 @@
 package org.example.editor;
 
 import javax.swing.*;
+import javax.swing.text.DefaultEditorKit;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 
 public class OutputPanel extends JDialog {
@@ -12,6 +14,13 @@ public class OutputPanel extends JDialog {
         JTextArea textArea = new JTextArea();
         textArea.setEditable(false);
         textArea.setText(output);
+
+        // Создаем действие копирования и добавляем его к текстовой области
+        InputMap inputMap = textArea.getInputMap(JComponent.WHEN_FOCUSED);
+        KeyStroke copyKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_C,
+                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
+        inputMap.put(copyKeyStroke, DefaultEditorKit.copyAction);
+
 
         // Создаем панель с текстовой областью и добавляем ее на диалоговое окно
         JScrollPane scrollPane = new JScrollPane(textArea);
@@ -32,4 +41,10 @@ public class OutputPanel extends JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 }
+
+
+
+
+
+
 
