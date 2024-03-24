@@ -1,4 +1,4 @@
-package org.example.editor;// Java Program to create a text editor using java
+package org.example.editor;
 
 import org.example.parser.Interpreter;
 
@@ -296,7 +296,7 @@ public class Editor extends JFrame implements ActionListener {
     }
 
     private void documentationFunction() {
-        DocumentationPanel documentationPanel = new DocumentationPanel();
+        DocumentationPanel documentationPanel = new DocumentationPanel(f);
         documentationPanel.setVisible(true);
     }
 
