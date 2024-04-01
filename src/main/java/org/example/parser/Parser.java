@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Parser {
-
+    private final List<Statement> program_statements;
     private static final Token EOF = new Token(TokenType.EOF, "");
 
     private final List<Token> tokens;
@@ -17,14 +17,14 @@ public final class Parser {
     public Parser(List<Token> tokens) {
         this.tokens = tokens;
         size = tokens.size();
+        program_statements = new ArrayList<>();
     }
 
-    public Statement parse() {
-        final BlockStatement result = new BlockStatement();
+    public List<Statement> parse() {
         while (!match(TokenType.EOF)) {
-            result.add(statement());
+            program_statements.add(statement());
         }
-        return result;
+        return program_statements;
     }
     private Statement block() {
         final BlockStatement block = new BlockStatement();

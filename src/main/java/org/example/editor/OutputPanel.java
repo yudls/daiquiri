@@ -7,23 +7,23 @@ import java.awt.event.KeyEvent;
 
 
 public class OutputPanel extends JDialog {
-    public OutputPanel(JFrame parent, String output) {
+    private JTextArea outputTextArea;
+    public OutputPanel(JFrame parent) {
         super(parent, "Вывод программы", true);
 
         // Создаем панель вывода
-        JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        textArea.setText(output);
+        outputTextArea = new JTextArea();
+        outputTextArea.setEditable(false);
 
         // Создаем действие копирования и добавляем его к текстовой области
-        InputMap inputMap = textArea.getInputMap(JComponent.WHEN_FOCUSED);
+        InputMap inputMap = outputTextArea.getInputMap(JComponent.WHEN_FOCUSED);
         KeyStroke copyKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_C,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
         inputMap.put(copyKeyStroke, DefaultEditorKit.copyAction);
 
 
         // Создаем панель с текстовой областью и добавляем ее на диалоговое окно
-        JScrollPane scrollPane = new JScrollPane(textArea);
+        JScrollPane scrollPane = new JScrollPane(outputTextArea);
         getContentPane().add(scrollPane);
 
         // Создаем кнопку "Закрыть"
@@ -40,6 +40,12 @@ public class OutputPanel extends JDialog {
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
+
+    public void appendOutput(String output) {
+        outputTextArea.append(output);
+    }
+
+
 }
 
 

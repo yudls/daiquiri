@@ -21,7 +21,8 @@ public class Editor extends JFrame implements ActionListener {
     public Editor() throws BadLocationException {
         // Create a frame
         f = new JFrame("DaiquiriEditor");
-
+//        ImageIcon icon = new ImageIcon(Editor.class.getResource("/daiquiri.ico"));
+//        f.setIconImage(icon.getImage());
         try {
             // Set metal look and feel
             UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
@@ -174,6 +175,7 @@ public class Editor extends JFrame implements ActionListener {
         f.setSize(800, 600);
         f.show();
 
+
     }
 
     // If a button is pressed
@@ -323,16 +325,12 @@ public class Editor extends JFrame implements ActionListener {
     }
 
     private void runFunction() {
-        String program_output;
-        try {
-            String program_text = t.getText();
-            Interpreter interpreter = new Interpreter(program_text);
-            program_output = interpreter.execute();
-        } catch (Exception exception) {
-            program_output = exception.toString();
-        }
-        OutputPanel outputPanel = new OutputPanel(f, program_output);
+        String program_text = t.getText();
+        // Запусть OutputPanel в новом потоке
+        OutputPanel outputPanel = new OutputPanel(f);
         outputPanel.setVisible(true);
+        Interpreter interpreter = new Interpreter(program_text, outputPanel);
+        interpreter.execute();
     }
 
 }
