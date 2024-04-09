@@ -10,10 +10,13 @@ public class VariableExpression implements Expression {
         this.name = name;
     }
 
+
     @Override
     public Value eval() {
-        if (!Variables.isExists(name))
-            throw new RuntimeException("Константы не существует");
+        System.out.println("VariableExpression: name:\t{" + name + "}");
+        if (!Variables.isExists(name)) {
+            throw new RuntimeException("Константы " + name + " не существует");
+        }
         return Variables.get(name);
     }
 

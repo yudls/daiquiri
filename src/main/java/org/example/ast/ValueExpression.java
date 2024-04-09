@@ -14,6 +14,7 @@ public class ValueExpression implements Expression {
         this.value = new StringValue(value);
     }
 
+
     @Override
     public Value eval() {
         return value;

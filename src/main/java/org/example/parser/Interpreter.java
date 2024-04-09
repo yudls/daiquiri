@@ -14,15 +14,15 @@ public final class Interpreter {
         String result;
         try {
             // Lexer
-            final List<Token> tokens = new Lexer(program_text).tokenize();
             System.out.println("Lexer:");
+            final List<Token> tokens = new Lexer(program_text).tokenize();
             for (Token token : tokens)
                 System.out.println(token.toString());
 
             // Parser
-            final Statement program_statement = new Parser(tokens).parse();
             System.out.println("\nParser");
-            System.out.println(program_statement.toString());
+            final Statement program_statement = new Parser(tokens).parse();
+            System.out.println(program_statement);
 
             result = program_statement.execute();
 

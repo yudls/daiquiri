@@ -18,7 +18,14 @@ public final class ForStatement implements Statement{
     public String execute() {
         StringBuilder result = new StringBuilder();
         for (initialization.execute(); termination.eval().asNumber() != 0; increment.execute()) {
-            result.append(block.execute());
+            try {
+                result.append(block.execute());
+            } catch (BreakStatement bs) {
+                break;
+            } catch (ContinueStatement cs) {
+                // continue;
+            }
+
         }
         return result.toString();
     }

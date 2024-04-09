@@ -9,6 +9,7 @@ public final class AssignmentStatement implements Statement {
     private final Expression expression;
 
     public AssignmentStatement(String variable, Expression expression) {
+        System.out.println("AssignmentStatement: Конструктор");
         this.variable = variable;
         this.expression = expression;
     }
@@ -17,6 +18,7 @@ public final class AssignmentStatement implements Statement {
     public String execute() {
         final Value result = expression.eval();
         Variables.set(variable, result);
+        System.out.println("AssignmentStatement: Установлена переменная:\t{" + variable + "}");
         return "";
     }
 

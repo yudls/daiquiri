@@ -2,7 +2,6 @@ package org.example.parser;
 
 import org.example.ast.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class Parser {
@@ -22,7 +21,9 @@ public final class Parser {
     public Statement parse() {
         final BlockStatement result = new BlockStatement();
         while (!match(TokenType.EOF)) {
-            result.add(statement());
+            Statement res = statement();
+            System.out.println(res);
+            result.add(res);
         }
         return result;
     }
@@ -50,24 +51,41 @@ public final class Parser {
         if (match(TokenType.WHILE)) {
             return whileStatement();
         }
+        if (match(TokenType.DO)) {
+            return doWhileStatement();
+        }
         if (match(TokenType.FOR)) {
             return forStatement();
+        }
+        if (match(TokenType.BREAK)) {
+            return new BreakStatement();
+        }
+        if (match(TokenType.CONTINUE)) {
+            return new ContinueStatement();
         }
         if (get(0).getType() == TokenType.LBRACE) {
             return block();
         }
-        return assignmentStatement();
+        if (get(0).getType() == TokenType.WORD && get(1).getType() == TokenType.EQ) {
+            return assignmentStatement();
+        }
+        throw new RuntimeException("Неизвестная инструкция ");
     }
 
     private Statement assignmentStatement() {
         // WORD EQ
-        final Token current = get(0);
-        if (match(TokenType.WORD) && get(0).getType() == TokenType.EQ) {
-            final String variable = current.getText();
-            consume(TokenType.EQ);
-            return new AssignmentStatement(variable, expression());
+
+        final String variable = get(0).getText();
+        consume(TokenType.WORD);
+        consume(TokenType.EQ);
+        if (get(0).getType() == TokenType.TEXT && get(1).getType() == TokenType.LBRACKET) {
+            ValueExpression text = new ValueExpression(get(0).getText());
+            consume(TokenType.TEXT);
+            consume(TokenType.LBRACKET);
+            Expression expression = textBrackets(text);
+            return new AssignmentStatement(variable, expression);
         }
-        throw new RuntimeException("Неизвестная инструкция ");
+        return new AssignmentStatement(variable, expression());
     }
 
     private Statement ifElse() {
@@ -88,6 +106,13 @@ public final class Parser {
         return new WhileStatement(condition, statement);
     }
 
+    private Statement  doWhileStatement() {
+        final Statement statement = statementOrBlock();
+        consume(TokenType.WHILE);
+        final Expression condition = expression();
+        return new DoWhileStatement(condition, statement);
+    }
+
     private Statement forStatement() {
         consume(TokenType.LPAREN);
         final Statement initialization = assignmentStatement();
@@ -100,7 +125,13 @@ public final class Parser {
         return new ForStatement(initialization, termination, increment, statement);
     }
 
-
+    private Statement bracketsStatement(VariableExpression text) {
+        consume(TokenType.WORD);
+        consume(TokenType.LBRACKET);
+        final Expression index = primary();
+        consume(TokenType.RBRACKET);
+        return new BracketsStatement(text, index);
+    }
 
 
     private Expression expression() {
@@ -134,6 +165,23 @@ public final class Parser {
 
         return result;
     }
+
+//    private Expression variableBrackets(VariableExpression text) {
+//        consume(TokenType.WORD);
+//        consume(TokenType.LBRACKET);
+//        final Expression index = primary();
+//        consume(TokenType.RBRACKET);
+//        return
+//    }
+
+
+    private Expression textBrackets(Expression text) {
+        final Expression index = primary();
+        consume(TokenType.RBRACKET);
+        return new BracketsExpression(text, index);
+    }
+
+
 
     private Expression equality() {
         Expression result = conditional();
@@ -227,9 +275,15 @@ public final class Parser {
             return new ValueExpression(Double.parseDouble(current.getText()));
         }
         if (match(TokenType.WORD)) {
+            if (match(TokenType.LBRACKET)) {
+                return textBrackets(new VariableExpression(current.getText()));
+            }
             return new VariableExpression(current.getText());
         }
         if (match(TokenType.TEXT)) {
+            if (match(TokenType.LBRACKET)) {
+                return textBrackets(new ValueExpression(current.getText()));
+            }
             return new ValueExpression(current.getText());
         }
         if (match(TokenType.LPAREN)) {

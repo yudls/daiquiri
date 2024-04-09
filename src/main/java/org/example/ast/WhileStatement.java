@@ -13,7 +13,13 @@ public final class WhileStatement implements Statement{
     public String execute() {
         StringBuilder result = new StringBuilder();
         while (condition.eval().asNumber() != 0) {
-            result.append(statement.execute());
+            try {
+                result.append(statement.execute());
+            } catch (BreakStatement breakStatement) {
+                break;
+            } catch (ContinueStatement cs) {
+                // continue;
+            }
         }
         return result.toString();
     }

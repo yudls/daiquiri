@@ -11,6 +11,9 @@ public enum TokenType {
     IF,
     ELSE,
     WHILE,
+    DO,
+    BREAK,
+    CONTINUE,
     FOR,
 
     // Operations
@@ -38,6 +41,8 @@ public enum TokenType {
     // Symbols
     LPAREN,
     RPAREN,
+    LBRACKET,
+    RBRACKET,
     LBRACE,
     RBRACE,
     SEMICOLON, // Точка с запятой

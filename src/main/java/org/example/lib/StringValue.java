@@ -6,6 +6,9 @@ public class StringValue implements Value{
     public StringValue(String value) {
         this.value = value;
     }
+    private char getCharAtValue (int index) {
+        return value.charAt(index);
+    }
 
     @Override
     public double asNumber() {
