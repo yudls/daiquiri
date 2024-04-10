@@ -17,6 +17,18 @@ public class Editor extends JFrame implements ActionListener {
     JTextArea t;
     UndoManager undoManager;
 
+    private static final String[] KEYWORDS = { // ключевые слова
+            "Вывод", " вывод",
+            "Если", "если",
+            "Иначе", "иначе",
+            "Пока", "пока",
+            "Делать", "делать",
+            "Для", "для",
+            "Остновить", "остановить",
+            "Продолжить", "продолжить",
+            "не"
+    };
+
     // Constructor
     public Editor() throws BadLocationException {
         // Create a frame
@@ -35,6 +47,12 @@ public class Editor extends JFrame implements ActionListener {
         t = new JTextArea();
         undoManager = new UndoManager();
         t.getDocument().addUndoableEditListener(undoManager);
+
+        // Text component with JScrollPane
+        JScrollPane scrollPane = new JScrollPane(t);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+
 
         // Create a menubar
         JMenuBar mb = new JMenuBar();
@@ -102,7 +120,7 @@ public class Editor extends JFrame implements ActionListener {
         // Добавление действия в ActionMap для быстрого удаления текста
         actionMap.put("deleteAction", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
-                deleteLineFunction();
+                    deleteLineFunction();
             }
         });
 
@@ -167,12 +185,18 @@ public class Editor extends JFrame implements ActionListener {
                 printFunction();
             }
         });
+        // Create a content pane with a layout manager
+        Container content = f.getContentPane();
+        content.setLayout(new BorderLayout());
+        content.add(scrollPane, BorderLayout.CENTER);
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setJMenuBar(mb);
-        f.add(t);
+        f.add(scrollPane); // Добавляем JScrollPane с текстовой панелью
         f.setSize(800, 600);
-        f.show();
+
+        f.setVisible(true);
+
 
     }
 
@@ -310,17 +334,21 @@ public class Editor extends JFrame implements ActionListener {
         while (start > 0 && text.charAt(start - 1) != '\n') {
             start--;
         }
-        if (caretPosition == start) {
-            t.replaceRange("", caretPosition - 1, caretPosition);
-            t.setCaretPosition(start - 1);
-        }
+
         // Находим конец строки
         while (end < text.length() && text.charAt(end) != '\n') {
             end++;
         }
+
         // Удаляем строку
-        t.replaceRange("", start, end);
+        if (end < text.length()) {
+            t.replaceRange("", start, end);
+        } else if (start > 0 && end >= text.length()) {
+            t.replaceRange("", start - 1, end);
+            t.setCaretPosition(start - 1);
+        }
     }
+
 
     private void runFunction() {
         String program_output;
@@ -336,5 +364,3 @@ public class Editor extends JFrame implements ActionListener {
     }
 
 }
-
-

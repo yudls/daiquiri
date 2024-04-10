@@ -121,6 +121,10 @@ public final class Lexer {
         }
         String word = buffer.toString();
         switch (word) {
+            case "не": {
+                addToken(TokenType.NOT);
+                break;
+            }
             case "Вывод":
             case "вывод": {
                 addToken(TokenType.PRINT);

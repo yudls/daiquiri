@@ -10,6 +10,8 @@ public final class Variables {
         variables.put("ПИ", new NumberValue(Math.PI));
         variables.put("E", new NumberValue(Math.E));
         variables.put("Е", new NumberValue(Math.E));
+        variables.put("истина", new NumberValue(1));
+        variables.put("ложь", new NumberValue(0));
     }
     public static boolean isExists(String key) {
         return variables.containsKey(key);

@@ -156,6 +156,14 @@ public final class Parser {
     }
 
     private Expression expression() {
+        return logicalNot();
+    }
+
+    private Expression logicalNot() {
+
+        if (match(TokenType.NOT)) {
+            return new UnaryExpression(UnaryExpression.Operation.NOT, logicalOr());
+        }
         return logicalOr();
     }
 
@@ -267,7 +275,7 @@ public final class Parser {
 
     private Expression unary() {
         if (match(TokenType.MINUS)) {
-            return new UnaryExpression('-', primary());
+            return new UnaryExpression(UnaryExpression.Operation.MINUS, primary());
         }
         if (match(TokenType.PLUS)) {
             return primary();

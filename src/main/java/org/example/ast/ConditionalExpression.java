@@ -60,7 +60,6 @@ public class ConditionalExpression implements Expression {
             case GT: result =  number1 > number2; break;
             case GTEQ: result =  number1 >= number2; break;
             case NOT_EQUALS: result =  number1 != number2; break;
-
             case AND: result = (number1 != 0) && (number2 != 0);
             case OR: result = (number1 != 0) || (number2 != 0);
             case EQUALS:

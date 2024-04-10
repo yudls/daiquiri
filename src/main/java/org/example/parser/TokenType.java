@@ -21,6 +21,12 @@ public enum TokenType {
     MINUS,
     STAR,
     SLASH,
+    PLUSPLUS,
+    MINUSMINUS,
+    PLUSEQ,
+    MINUSEQ,
+    STAREQ,
+    SLASHEQ,
 
     // Assignment
     EQ,
@@ -37,6 +43,7 @@ public enum TokenType {
     BARBAR,
     AMP,
     AMPAMP,
+    NOT,
 
     // Symbols
     LPAREN,
