@@ -45,7 +45,9 @@ public enum TokenType {
     RBRACKET,
     LBRACE,
     RBRACE,
+    COLON, // Двоеточие
     SEMICOLON, // Точка с запятой
+    COMMA, // Запятая
 
     EOF
 }

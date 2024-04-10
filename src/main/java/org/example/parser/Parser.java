@@ -66,11 +66,15 @@ public final class Parser {
         if (get(0).getType() == TokenType.LBRACE) {
             return block();
         }
+        if (get(0).getType() == TokenType.WORD && get(1).getType() == TokenType.LPAREN) {
+            return new FunctionStatement(function());
+        }
         if (get(0).getType() == TokenType.WORD && get(1).getType() == TokenType.EQ) {
             return assignmentStatement();
         }
         throw new RuntimeException("Неизвестная инструкция ");
     }
+
 
     private Statement assignmentStatement() {
         // WORD EQ
@@ -78,13 +82,6 @@ public final class Parser {
         final String variable = get(0).getText();
         consume(TokenType.WORD);
         consume(TokenType.EQ);
-        if (get(0).getType() == TokenType.TEXT && get(1).getType() == TokenType.LBRACKET) {
-            ValueExpression text = new ValueExpression(get(0).getText());
-            consume(TokenType.TEXT);
-            consume(TokenType.LBRACKET);
-            Expression expression = textBrackets(text);
-            return new AssignmentStatement(variable, expression);
-        }
         return new AssignmentStatement(variable, expression());
     }
 
@@ -125,18 +122,43 @@ public final class Parser {
         return new ForStatement(initialization, termination, increment, statement);
     }
 
-    private Statement bracketsStatement(VariableExpression text) {
-        consume(TokenType.WORD);
-        consume(TokenType.LBRACKET);
-        final Expression index = primary();
+    private Expression textBrackets(Expression expression) {
+        Expression begin = null;
+        Expression end = null;
+        boolean colon = false;
+
+        if (get(0).getType() == TokenType.NUMBER) {
+            begin = expression();
+        }
+        if (match(TokenType.COLON)) {
+            colon = true;
+        }
+        if (get(0).getType() == TokenType.NUMBER) {
+            end = expression();
+        }
+
         consume(TokenType.RBRACKET);
-        return new BracketsStatement(text, index);
+        if (!colon && begin != null && end != null) throw new RuntimeException("Отсутствует \":\" - разделитель индексов в квадратных скобках");
+        if (!colon && begin == null && end == null) throw new RuntimeException("Отсутствует индекс в квадратных скобках");
+
+        return new BracketsExpression(expression, begin, end, colon);
     }
 
+    private FunctionalExpression function() {
+        final String name = consume(TokenType.WORD).getText();
+        consume(TokenType.LPAREN);
+        final FunctionalExpression function = new FunctionalExpression(name);
+        while (!match(TokenType.RPAREN)) {
+            function.addArgument(expression());
+            match(TokenType.COMMA);
+        }
+        return function;
+    }
 
     private Expression expression() {
         return logicalOr();
     }
+
 
     private Expression logicalOr() {
         Expression result = logicalAnd();
@@ -165,22 +187,6 @@ public final class Parser {
 
         return result;
     }
-
-//    private Expression variableBrackets(VariableExpression text) {
-//        consume(TokenType.WORD);
-//        consume(TokenType.LBRACKET);
-//        final Expression index = primary();
-//        consume(TokenType.RBRACKET);
-//        return
-//    }
-
-
-    private Expression textBrackets(Expression text) {
-        final Expression index = primary();
-        consume(TokenType.RBRACKET);
-        return new BracketsExpression(text, index);
-    }
-
 
 
     private Expression equality() {
@@ -274,6 +280,9 @@ public final class Parser {
         if (match(TokenType.NUMBER)) {
             return new ValueExpression(Double.parseDouble(current.getText()));
         }
+        if (get(0).getType() == TokenType.WORD && get(1).getType() == TokenType.LPAREN) {
+            return function();
+        }
         if (match(TokenType.WORD)) {
             if (match(TokenType.LBRACKET)) {
                 return textBrackets(new VariableExpression(current.getText()));
@@ -294,6 +303,8 @@ public final class Parser {
 
         throw new RuntimeException("Неизвестное выражение");
     }
+
+
 
     private Token consume(TokenType type) {
         final Token current = get(0);
