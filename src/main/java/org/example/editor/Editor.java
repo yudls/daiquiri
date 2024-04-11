@@ -41,6 +41,35 @@ public class Editor extends JFrame implements ActionListener {
         t = new RSyntaxTextArea();
         undoManager = new UndoManager();
         t.getDocument().addUndoableEditListener(undoManager);
+
+
+        SyntaxScheme scheme = t.getSyntaxScheme();
+        t.setSyntaxScheme(scheme); // Установка схемы подсветки синтаксиса
+        scheme.getStyle(Token.RESERVED_WORD).foreground = Color.BLUE; // Задаем цвет для ключевых слов
+
+        // Set custom token maker
+        TokenMakerFactory.setDefaultInstance(new TokenMakerFactory() {
+            @Override
+            protected TokenMaker getTokenMakerImpl(String s) {
+                if ("text/daiquiri".equals(s)) {
+                    System.out.println("getTokenMakerImpl");
+                    return new DaiquiriTokenMaker();
+                }
+                return null; // Возвращаем null для всех других типов синтаксиса
+            }
+
+            @Override
+            public Set<String> keySet() {
+                Set<String> set = new HashSet<>();
+                set.add("text/daiquiri");
+                System.out.println("keySet");
+                // Добавьте другие типы синтаксиса, если они используются в вашем приложении
+                return set;
+            }
+        });
+
+        t.setSyntaxEditingStyle("text/daiquiri"); // Установка типа синтаксиса
+        System.out.println("Тип синтаксиса установлен как text/daiquiri");
         t.setCodeFoldingEnabled(true);
 
 
@@ -49,6 +78,7 @@ public class Editor extends JFrame implements ActionListener {
         RTextScrollPane scrollPane = new RTextScrollPane (t);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+
 
 
         // Create a menubar
