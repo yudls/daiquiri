@@ -127,20 +127,19 @@ public final class Parser {
         Expression end = null;
         boolean colon = false;
 
-        if (get(0).getType() == TokenType.NUMBER) {
+        if (get(0).getType() == TokenType.NUMBER || get(0).getType() == TokenType.WORD) {
             begin = expression();
         }
         if (match(TokenType.COLON)) {
             colon = true;
         }
-        if (get(0).getType() == TokenType.NUMBER) {
+        if (get(0).getType() == TokenType.NUMBER || get(0).getType() == TokenType.WORD){
             end = expression();
         }
 
         consume(TokenType.RBRACKET);
         if (!colon && begin != null && end != null) throw new RuntimeException("Отсутствует \":\" - разделитель индексов в квадратных скобках");
         if (!colon && begin == null && end == null) throw new RuntimeException("Отсутствует индекс в квадратных скобках");
-
         return new BracketsExpression(expression, begin, end, colon);
     }
 

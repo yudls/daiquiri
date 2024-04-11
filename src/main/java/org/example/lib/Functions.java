@@ -28,6 +28,19 @@ public class Functions {
                 return new NumberValue(args[0].asString().length());
             }
         });
+        functions.put("индекс", new Function() {
+            @Override
+            public Value execute(Value... args) {
+                if (args.length != 2 && args.length != 3) throw new RuntimeException("Ожидалось два или три аргумента");
+                String string = args[0].asString();
+                String sub = args[1].asString();
+                int fromIndex = 0;
+                if (args.length == 3) {
+                    fromIndex = (int) args[2].asNumber();
+                }
+                return new NumberValue(string.indexOf(sub, fromIndex));
+            }
+        });
     }
     public static boolean isExists(String key) {
         return functions.containsKey(key);

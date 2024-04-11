@@ -46,7 +46,9 @@ public class BracketsExpression implements Expression {
                 result = string.substring(begin, end);
             }
         } else {
+            System.out.println("begin_index_expression.eval().asNumber())");
             begin = (int) begin_index_expression.eval().asNumber();
+            System.out.println("begin_index_expression.eval().asNumber(): " + begin);
             result = string.substring(begin, begin + 1);
         }
         return new StringValue(result);
@@ -56,8 +58,8 @@ public class BracketsExpression implements Expression {
     @Override
     public String toString() {
         return String.format(string_expression.toString() + "[" +
-                (begin_index_expression == null ? " " : begin_index_expression.eval().asNumber()) +
+                (begin_index_expression == null ? " " : begin_index_expression.toString()) +
                 (colon ? " : " : "") +
-                (end_index_expression == null ? " " : end_index_expression.eval().asNumber()) + "]");
+                (end_index_expression == null ? " " : end_index_expression.toString()) + "]");
     }
 }
