@@ -6,31 +6,24 @@ import java.awt.*;
 import javax.swing.*;
 import java.io.*;
 import java.awt.event.*;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.plaf.metal.*;
 import javax.swing.undo.UndoManager;
 import javax.swing.text.*;
+
+import org.fife.ui.rsyntaxtextarea.*;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 public class Editor extends JFrame implements ActionListener {
     // Frame
     JFrame f;
     // Text component
-    JTextArea t;
+    RSyntaxTextArea t;
     UndoManager undoManager;
 
-    private static final String[] KEYWORDS = { // ключевые слова
-            "Вывод", " вывод",
-            "Если", "если",
-            "Иначе", "иначе",
-            "Пока", "пока",
-            "Делать", "делать",
-            "Для", "для",
-            "Остновить", "остановить",
-            "Продолжить", "продолжить",
-            "не"
-    };
-
     // Constructor
-    public Editor() throws BadLocationException {
+    public Editor() {
         // Create a frame
         f = new JFrame("DaiquiriEditor");
 
@@ -40,16 +33,20 @@ public class Editor extends JFrame implements ActionListener {
 
             // Set theme to ocean
             MetalLookAndFeel.setCurrentTheme(new OceanTheme());
+
         } catch (Exception e) {
         }
 
         // Text component
-        t = new JTextArea();
+        t = new RSyntaxTextArea();
         undoManager = new UndoManager();
         t.getDocument().addUndoableEditListener(undoManager);
+        t.setCodeFoldingEnabled(true);
+
+
 
         // Text component with JScrollPane
-        JScrollPane scrollPane = new JScrollPane(t);
+        RTextScrollPane scrollPane = new RTextScrollPane (t);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
@@ -199,6 +196,7 @@ public class Editor extends JFrame implements ActionListener {
 
 
     }
+
 
     // If a button is pressed
     public void actionPerformed(ActionEvent e) {
