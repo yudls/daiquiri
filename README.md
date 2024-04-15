@@ -19,8 +19,11 @@
 
 ## Как попробовать
 Чтобы программа работала на вашем компьютере должен быть установлен нужен JDK, если его ещё нет, можете установить с [официального сайта Oracle](https://www.oracle.com/java/technologies/downloads).
-Чтобы запустить приложение, скачайте актуальную версию [daiquiri.jar](https://github.com/yudls/daiquiri/blob/main/versions/daiquiri.jar)
-или можете самостоятельно собрать проект:
+Чтобы запустить приложение, скачайте актуальную версию [daiquiri.jar](https://github.com/yudls/daiquiri/blob/main/versions/daiquiri.jar).
+
+### Если вы скачиваете на MacOS, необходимо зайти в Настройки -> Конфиденциальность и безопасность -> Найти daiquiri.jar -> Открыть все равно.
+![open anyway](https://github.com/yudls/daiquiri/assets/119896503/a45be5eb-134a-4b11-bbcc-fea263a6bab3)
+### Или можете самостоятельно собрать проект:
 ```
 git clone https://github.com/yudls/daiquiri
 cd daiquiri
