@@ -127,14 +127,15 @@ public final class Parser {
         Expression end = null;
         boolean colon = false;
 
-        if (get(0).getType() == TokenType.NUMBER || get(0).getType() == TokenType.WORD) {
+
+        if (get(0).getType() != TokenType.COLON) {
             begin = expression();
         }
         if (match(TokenType.COLON)) {
             colon = true;
-        }
-        if (get(0).getType() == TokenType.NUMBER || get(0).getType() == TokenType.WORD){
-            end = expression();
+            if (get(0).getType() != TokenType.RBRACKET) {
+                end = expression();
+            }
         }
 
         consume(TokenType.RBRACKET);
